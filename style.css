@@ -1,0 +1,16 @@
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+h1,
+h2 {
+  font-size: 20px;
+}
