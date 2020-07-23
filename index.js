@@ -6,15 +6,22 @@ function getImage(breed) {
 }
 
 function displayResults(responseJson) {
-  $(".results-img").replaceWith(
-    `<img src="${responseJson.message}" class="results-img">`
-  );
-  //display the results section
-  $(".results").removeClass("hidden");
+  $(".error p").text("");
+  if (responseJson.status === "success") {
+    $(".results img").replaceWith(
+      `<img src="${responseJson.message}" class="results-img">`
+    );
+    //display the results section
+    $(".results").removeClass("hidden");
+  } else {
+    $(".results").addClass("hidden");
+    $(".error p").text("Breed not found");
+  }
 }
 
 function watchForInput() {
   //watchiong for submit event
+
   $("form").submit((event) => {
     event.preventDefault();
     getImage($(".breed").val()); //runs getImage with the value of the user's input
